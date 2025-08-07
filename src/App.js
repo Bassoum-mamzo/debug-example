@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js (buggy)
+import Counter from './Counter';
+import Header from './Header';
+import TodoList from './TodoList';
+import { useState } from 'react';
 
 function App() {
+  const [title, setTitle] = useState('Bienvenue');
+  // pas de todos définis, ou passe une valeur non-tableau
+  const todos = undefined; // BUG
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header title={title} />
+      <Counter />
+      <TodoList todos={todos} />
+      <button onClick={() => setTitle('Titre mis à jour')}>Changer le titre</button>
     </div>
   );
 }
